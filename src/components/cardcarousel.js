@@ -1,4 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
+// @flow 
+import * as React from 'react';
 import {
   Box,
   Heading,
@@ -9,20 +10,11 @@ import {
   HStack,
   Stack,
   NativeBaseProvider,
-} from "native-base";
-import { VStack, Divider } from "native-base";
-
-export default function HotelCard({ hotel, navigation }) {
-  // const [hotel, sethotel] = useState(props.hotel);
-  useEffect(() => {}, []);
-  const navigateToDetails = (id) => {
-    navigation.push("details", {
-      id: id,
-    });
-  };
-
-  return (
-    <Box
+} from "native-base"
+  // import { VStack, Box, Divider } from "native-base";
+const CardCarousel = ({ item, index , type }) => {
+    return (
+      <Box
       maxW="80"
       rounded="lg"
       overflow="hidden"
@@ -39,11 +31,15 @@ export default function HotelCard({ hotel, navigation }) {
       _light={{
         backgroundColor: "gray.50",
       }}
-      marginY={3}
     >
       <Box>
         <AspectRatio w="100%" ratio={16 / 9}>
-          <Image source={{uri : `${hotel?.data().image_url}`}} alt="image" />
+          <Image
+            source={{
+              uri: `${item.data().image_url}`,
+            }}
+            alt="image"
+          />
         </AspectRatio>
         <Center
           bg="violet.500"
@@ -59,21 +55,17 @@ export default function HotelCard({ hotel, navigation }) {
           bottom="0"
           px="3"
           py="1.5"
-        ></Center>
+        >
+          {type}
+        </Center>
       </Box>
       <Stack p="4" space={3}>
-        <Stack space={2}>
-          <Heading
-            onPress={() => {
-              navigateToDetails(hotel.id);
-            }}
-            size="md"
-            ml="-1"
-          >
-            {hotel.data().name}
+        <Stack  space={2}>
+          <Heading size="md" ml="-1">
+            {item.data().name}
           </Heading>
           <Text
-            fontSize="xs"
+            fontSize="xl"
             _light={{
               color: "violet.500",
             }}
@@ -84,10 +76,13 @@ export default function HotelCard({ hotel, navigation }) {
             ml="-0.5"
             mt="-1"
           >
-            address : {hotel.data().location?.address}
+            Rate : {item.data().rate ? item.data().rate : item.data().rating}
           </Text>
         </Stack>
-        {/* <Text fontWeight="400">{hotel.data().About}</Text> */}
+        {/* <Text fontWeight="400">
+          Bengaluru (also called Bangalore) is the center of India's high-tech
+          industry. The city is also known for its parks and nightlife.
+        </Text>
         <HStack alignItems="center" space={4} justifyContent="space-between">
           <HStack alignItems="center">
             <Text
@@ -97,11 +92,12 @@ export default function HotelCard({ hotel, navigation }) {
               }}
               fontWeight="400"
             >
-              rate: {hotel.data().rate}
+              6 mins ago
             </Text>
           </HStack>
-        </HStack>
+        </HStack> */}
       </Stack>
     </Box>
-  );
-}
+    );
+};
+export default CardCarousel;

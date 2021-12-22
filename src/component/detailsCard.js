@@ -9,13 +9,13 @@ import {
   Box,
   Heading,
   AspectRatio,
-  Image,
+  // Image,
   Center,
   HStack,
   Stack,
   NativeBaseProvider,
 } from "native-base";
-
+import { Image} from "react-native"
 export default function DetailsCard() {
   const [hotel, sethotel] = useState();
   const route = useRoute();
@@ -45,6 +45,7 @@ export default function DetailsCard() {
     //   <Text>{hotel?.review}</Text>
 
     // </View>
+    <Center>
     <Box
       maxW="80"
       rounded="lg"
@@ -64,7 +65,7 @@ export default function DetailsCard() {
     >
       <Box>
         <AspectRatio w="100%" ratio={16 / 9}>
-          <Image source={hotel?.image_url} alt="image" />
+          <Image source={{uri :`${hotel?.image_url}`}} alt="image" />
         </AspectRatio>
         <Center
           bg="violet.500"
@@ -99,10 +100,10 @@ export default function DetailsCard() {
             ml="-0.5"
             mt="-1"
           >
-            {hotel?.payment_method}
+          <Text style={{fontSize: 20 , color: "red"}}>Payment :</Text>  {hotel?.payment_method}
           </Text>
+        <Text fontWeight="400" >  <Text style={{fontSize: 20 , color: "red"}}>features :</Text> {hotel?.feature}</Text>
         </Stack>
-        <Text fontWeight="400">{hotel?.feature}</Text>
         <HStack alignItems="center" space={5} justifyContent="space-around">
           <HStack alignItems="center">
             <Text
@@ -112,11 +113,12 @@ export default function DetailsCard() {
               }}
               fontWeight="400"
             >
-              {hotel?.review}
+              <Text style={{fontSize: 20 , color: "red"}}>Review :</Text> {hotel?.review}
             </Text>
           </HStack>
         </HStack>
       </Stack>
     </Box>
+    </Center>
   );
 }

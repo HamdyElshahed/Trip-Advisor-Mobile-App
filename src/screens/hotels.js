@@ -1,5 +1,5 @@
 import { collection, getDoc, getDocs } from "firebase/firestore";
-import { ScrollView, View, Text, Button } from "native-base";
+import { ScrollView, Center ,View, Text, Button } from "native-base";
 import { db } from "../config/firebase";
 import React, { useEffect, useState } from "react";
 import HotelCard from "../component/hotelCard";
@@ -29,12 +29,14 @@ export default function Hotel(props) {
           return (
             <>
               {/* <Text> {hotel.data().name} </Text> */}
+              <Center>
               <HotelCard
                 key={hotel.data().id}
                 hotel={hotel}
                 navigation={props.navigation}
               />
-              ;
+              </Center>
+              
             </>
           );
         })}

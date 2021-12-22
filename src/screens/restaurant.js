@@ -53,7 +53,7 @@ export const restaurant = ({navigation}) => {
     
     return (
         <>
-         <AppBar/>
+         {/* <AppBar/> */}
 
         {isLoading? <Center flex={1} px="3"><HStack space={2} alignItems="center">
         <Spinner color="green.500" size={33} accessibilityLabel="Loading posts" />
