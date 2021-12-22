@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeBaseProvider, Box } from 'native-base';
 import RouteComponent from './src/route/route';
-import AppBar from './src/components/appbar';
 export default function App() {
   return (
     <NativeBaseProvider>
