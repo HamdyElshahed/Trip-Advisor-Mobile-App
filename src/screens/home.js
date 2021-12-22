@@ -12,7 +12,9 @@ import {
   Text,
   Body,
   ScrollView,
-  Center
+  Center,
+  Button,
+  Link
 } from "native-base";
 import { VStack, Box, Divider } from "native-base";
 import Carousel from "react-native-snap-carousel";
@@ -32,11 +34,18 @@ const Home = ({ navigation }) => {
     let snapshot =  await getDocs(q);
     fn(snapshot.docs)
   }
- 
+  console.log(navigation);
+
 
   return (
   <ScrollView >
     {/* <Center> */}
+    <View style={{display : 'flex',flexDirection : 'row'}}>
+    <Button style={{width : '25%',}}onPress={() => navigation.navigate('hotel')}>Hotels</Button>
+    <Button style={{width : '25%',}} onPress={() => navigation.navigate('restaurant')}>Restaurants</Button>
+    <Button style={{width : '25%',}} onPress={() => navigation.navigate('login')}>Login</Button>
+    <Button style={{width : '25%',}} onPress={() => navigation.navigate('register')}>Register</Button>
+    </View>
       <Text  style={{ fontSize:30 ,  paddingVertical : 20 , paddingLeft: 40}}>Top Rated Hotels</Text>
     <Carousel
       layout={"default"}
@@ -50,8 +59,8 @@ const Home = ({ navigation }) => {
           )
         }
       }
-      sliderWidth={430}
-      itemWidth={350}
+      sliderWidth={400}
+      itemWidth={300}
     />
     {/* </Center> */}
       <Text style={{ fontSize:30 , paddingVertical : 20 , paddingLeft: 40}}>Top Rated Restaurants</Text>
